@@ -1,0 +1,16 @@
+version: '3' # composeファイルのバーション指定
+services:
+  open-ayame: # service名
+    build: . # ビルドに使用するDockerfileがあるディレクトリ指定
+    restart: always
+    environment:
+      VIRTUAL_HOST: ayame.example.com
+      LETSENCRYPT_HOST: ayame.example.com
+      LETSENCRYPT_EMAIL: example@mail.com
+    expose:
+      - 80
+
+networks:
+  default:
+    external:
+      name: shared
